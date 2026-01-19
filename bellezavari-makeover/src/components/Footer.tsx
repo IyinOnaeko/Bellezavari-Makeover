@@ -16,7 +16,7 @@ export function Footer() {
               Bellezavari
             </h2>
             <p className="text-white/70 text-sm leading-relaxed mb-6">
-              Premium hair styling and transformations in London. 
+              Premium hair styling and transformations in Toronto. 
               Specializing in braids, locs, weaves, and natural hair care.
             </p>
             <a
@@ -110,7 +110,7 @@ export function Footer() {
                 Terms & Policies
               </Link>
               <span className="text-white/30">•</span>
-              <span>London, UK</span>
+              <span>Toronto, Canada</span>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 # Bellezavari - Premium Hair Styling Booking Platform
 
-A beautiful, modern booking platform for Bellezavari hair styling services. Built with Next.js, Tailwind CSS, Firebase, and Paystack.
+A beautiful, modern booking platform for Bellezavari hair styling services in Toronto, Canada. Built with Next.js, Tailwind CSS, Firebase, and Paystack.
 
 ## Features
 

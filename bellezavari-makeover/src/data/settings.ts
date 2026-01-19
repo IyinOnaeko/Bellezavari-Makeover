@@ -2,7 +2,7 @@ import { Settings } from '@/types';
 
 export const settings: Settings = {
   businessName: 'Bellezavari',
-  timezone: 'Europe/London',
+  timezone: 'America/Toronto',
   workingHours: [
     { dayOfWeek: 0, isOpen: false, openTime: '09:00', closeTime: '18:00' }, // Sunday - Closed
     { dayOfWeek: 1, isOpen: true, openTime: '09:00', closeTime: '19:00' },  // Monday
@@ -17,14 +17,14 @@ export const settings: Settings = {
     // Format: 'YYYY-MM-DD'
   ],
   bufferMinutes: 30, // Buffer between appointments
-  currency: 'GBP',
-  currencySymbol: '£',
+  currency: 'CAD',
+  currencySymbol: '$',
   location: {
-    address: 'London, UK',
-    city: 'London',
+    address: 'Toronto, ON',
+    city: 'Toronto',
     postcode: '',
   },
-  homeServiceFee: 50,
+  homeServiceFee: 75,
   instagramUrl: 'https://instagram.com/bellezavari',
   contactEmail: 'hello@bellezavari.com',
   contactPhone: '',
@@ -66,7 +66,7 @@ If you know you'll be late, please contact us immediately.`,
   },
   homeService: {
     title: 'Home Service Policy',
-    content: `We offer home service within our service area for an additional fee.
+    content: `We offer home service within the Greater Toronto Area for an additional fee.
 
 • Home service fee is added to your booking total and paid upfront.
 

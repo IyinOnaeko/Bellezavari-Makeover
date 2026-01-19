@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 // Format price with currency
-export function formatPrice(amount: number, currencySymbol: string = '£'): string {
+export function formatPrice(amount: number, currencySymbol: string = '$'): string {
   return `${currencySymbol}${amount.toFixed(0)}`;
 }
 
@@ -30,7 +30,7 @@ export function formatTime(time: string): string {
 
 // Format date for display
 export function formatDate(date: Date): string {
-  return date.toLocaleDateString('en-GB', {
+  return date.toLocaleDateString('en-CA', {
     weekday: 'long',
     day: 'numeric',
     month: 'long',
@@ -40,7 +40,7 @@ export function formatDate(date: Date): string {
 
 // Format date short
 export function formatDateShort(date: Date): string {
-  return date.toLocaleDateString('en-GB', {
+  return date.toLocaleDateString('en-CA', {
     day: 'numeric',
     month: 'short',
   });
@@ -57,10 +57,11 @@ export function isValidEmail(email: string): boolean {
   return emailRegex.test(email);
 }
 
-// Validate UK phone number (basic)
+// Validate Canadian/North American phone number
 export function isValidPhone(phone: string): boolean {
-  const cleaned = phone.replace(/\s/g, '');
-  const phoneRegex = /^(\+44|0)[0-9]{10,11}$/;
+  const cleaned = phone.replace(/[\s\-\(\)\.]/g, '');
+  // Accepts formats: +1XXXXXXXXXX, 1XXXXXXXXXX, XXXXXXXXXX (10 digits)
+  const phoneRegex = /^(\+?1)?[2-9]\d{2}[2-9]\d{6}$/;
   return phoneRegex.test(cleaned);
 }
 

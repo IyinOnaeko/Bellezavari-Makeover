@@ -19,22 +19,22 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Bellezavari | Premium Hair Styling in London",
-  description: "Experience luxury hair styling with Bellezavari. Specializing in braids, locs, weaves, and natural hair care. Book your transformation today.",
-  keywords: ["hair styling", "braids", "locs", "weaves", "London", "hair salon", "knotless braids", "faux locs"],
+  title: "Bellezavari | Premium Hair Styling in Toronto",
+  description: "Experience luxury hair styling with Bellezavari. Specializing in braids, locs, weaves, and natural hair care in Toronto, Canada. Book your transformation today.",
+  keywords: ["hair styling", "braids", "locs", "weaves", "Toronto", "Canada", "hair salon", "knotless braids", "faux locs", "GTA"],
   authors: [{ name: "Bellezavari" }],
   openGraph: {
-    title: "Bellezavari | Premium Hair Styling in London",
-    description: "Experience luxury hair styling with Bellezavari. Specializing in braids, locs, weaves, and natural hair care.",
+    title: "Bellezavari | Premium Hair Styling in Toronto",
+    description: "Experience luxury hair styling with Bellezavari. Specializing in braids, locs, weaves, and natural hair care in Toronto.",
     url: "https://bellezavari.com",
     siteName: "Bellezavari",
-    locale: "en_GB",
+    locale: "en_CA",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bellezavari | Premium Hair Styling in London",
-    description: "Experience luxury hair styling with Bellezavari.",
+    title: "Bellezavari | Premium Hair Styling in Toronto",
+    description: "Experience luxury hair styling with Bellezavari in Toronto.",
   },
   robots: {
     index: true,

@@ -125,7 +125,7 @@ function BookingContent() {
     if (!clientDetails.phone.trim()) {
       newErrors.phone = 'Phone number is required';
     } else if (!isValidPhone(clientDetails.phone)) {
-      newErrors.phone = 'Please enter a valid UK phone number';
+      newErrors.phone = 'Please enter a valid Canadian phone number';
     }
 
     setErrors(newErrors);
@@ -440,9 +440,10 @@ function BookingContent() {
                         className={`input ${errors.phone ? 'border-error' : ''}`}
                         value={clientDetails.phone}
                         onChange={(e) => setClientDetails(prev => ({ ...prev, phone: e.target.value }))}
-                        placeholder="07xxx xxxxxx"
+                        placeholder="(416) 555-1234"
                       />
                       {errors.phone && <p className="text-error text-sm mt-1">{errors.phone}</p>}
+                      <p className="text-xs text-charcoal/50 mt-1">Canadian phone number</p>
                     </div>
                     
                     <div className="md:col-span-2">
@@ -724,7 +725,7 @@ function DatePicker({
   };
 
   const days = getDaysInMonth(currentMonth);
-  const monthName = currentMonth.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+  const monthName = currentMonth.toLocaleDateString('en-CA', { month: 'long', year: 'numeric' });
 
   return (
     <div className="max-w-md mx-auto">

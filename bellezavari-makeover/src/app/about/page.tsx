@@ -49,7 +49,7 @@ export default function AboutPage() {
                 <p>
                   Bellezavari was born from a deep love for hair artistry and a commitment to 
                   making every client feel extraordinary. What started as a passion has grown 
-                  into a trusted destination for premium hair styling in London.
+                  into a trusted destination for premium hair styling in Toronto.
                 </p>
                 <p>
                   We believe that your hair is more than just an accessory—it&apos;s an expression 
@@ -69,7 +69,7 @@ export default function AboutPage() {
                     <Star key={i} size={18} className="text-accent fill-accent" />
                   ))}
                 </div>
-                <span className="text-charcoal/60 text-sm">Trusted by clients across London</span>
+                <span className="text-charcoal/60 text-sm">Trusted by clients across the GTA</span>
               </div>
             </motion.div>
 

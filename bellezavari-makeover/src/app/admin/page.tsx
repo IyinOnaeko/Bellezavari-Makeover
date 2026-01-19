@@ -232,7 +232,7 @@ export default function AdminPage() {
 
             <h2 className="font-display text-xl text-secondary">
               {viewMode === 'week'
-                ? `${weekDays[0].toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })} - ${weekDays[6].toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}`
+                ? `${weekDays[0].toLocaleDateString('en-CA', { day: 'numeric', month: 'short' })} - ${weekDays[6].toLocaleDateString('en-CA', { day: 'numeric', month: 'short', year: 'numeric' })}`
                 : formatDate(currentDate)
               }
             </h2>
@@ -252,7 +252,7 @@ export default function AdminPage() {
             <div className="grid grid-cols-7 gap-3">
               {weekDays.map((date) => {
                 const dayBookings = getBookingsForDate(date);
-                const dayName = date.toLocaleDateString('en-GB', { weekday: 'short' });
+                const dayName = date.toLocaleDateString('en-CA', { weekday: 'short' });
                 const dayNum = date.getDate();
 
                 return (

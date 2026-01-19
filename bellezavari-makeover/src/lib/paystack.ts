@@ -57,7 +57,7 @@ function openPaystackPopup(config: PaystackConfig): void {
     key: PAYSTACK_PUBLIC_KEY,
     email: config.email,
     amount: config.amount,
-    currency: config.currency || 'GBP',
+    currency: config.currency || 'CAD',
     ref: config.reference || generatePaystackReference(),
     metadata: config.metadata || {},
     channels: config.channels || ['card', 'bank'],

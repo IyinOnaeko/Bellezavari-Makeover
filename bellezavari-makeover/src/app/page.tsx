@@ -69,7 +69,7 @@ export default function HomePage() {
               variants={fadeInUp}
               className="font-body text-lg md:text-xl text-charcoal/70 max-w-2xl mx-auto mb-10 leading-relaxed"
             >
-              Experience the artistry of premium hair styling in London. 
+              Experience the artistry of premium hair styling in Toronto. 
               From intricate braids to flawless locs, every style is crafted 
               with precision and care.
             </motion.p>

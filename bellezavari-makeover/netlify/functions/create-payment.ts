@@ -83,7 +83,7 @@ export const handler: Handler = async (event: HandlerEvent): Promise<HandlerResp
       body: JSON.stringify({
         email,
         amount: amountInPence,
-        currency: 'GBP',
+        currency: 'CAD',
         reference,
         callback_url: `${process.env.URL || 'https://bellezavari.com'}/book/success`,
         metadata: {
