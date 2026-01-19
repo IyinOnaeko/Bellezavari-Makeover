@@ -1,0 +1,36 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Next.js plugin for Netlify
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Redirect /admin to require some form of auth in production
+# For now, it's unprotected - add Netlify Identity or similar for production
+
+# Headers for security
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Functions configuration
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Environment variable placeholders (set these in Netlify dashboard)
+# NEXT_PUBLIC_FIREBASE_API_KEY
+# NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+# NEXT_PUBLIC_FIREBASE_PROJECT_ID
+# NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+# NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+# NEXT_PUBLIC_FIREBASE_APP_ID
+# NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY
+# PAYSTACK_SECRET_KEY
