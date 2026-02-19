@@ -31,8 +31,15 @@ import {
   Timestamp,
   DocumentData
 } from 'firebase/firestore';
-import { db } from './firebase';
+import { db, isFirebaseConfigured } from './firebase';
 import { Booking, ClientDetails, BookingExtras } from '@/types';
+
+function getDb() {
+  if (!isFirebaseConfigured || !db) {
+    throw new Error('Firebase is not configured. Please set up environment variables.');
+  }
+  return db;
+}
 
 // ============================================================================
 // COLLECTION NAMES
@@ -105,7 +112,7 @@ export async function createBooking(bookingData: {
     updatedAt: Timestamp.now(),
   };
 
-  const docRef = await addDoc(collection(db, BOOKINGS_COLLECTION), booking);
+  const docRef = await addDoc(collection(getDb(), BOOKINGS_COLLECTION), booking);
   return docRef.id;
 }
 
@@ -116,7 +123,7 @@ export async function createBooking(bookingData: {
  * @returns The Booking object, or null if not found
  */
 export async function getBookingById(bookingId: string): Promise<Booking | null> {
-  const docRef = doc(db, BOOKINGS_COLLECTION, bookingId);
+  const docRef = doc(getDb(), BOOKINGS_COLLECTION, bookingId);
   const docSnap = await getDoc(docRef);
 
   if (!docSnap.exists()) {
@@ -135,7 +142,7 @@ export async function getBookingById(bookingId: string): Promise<Booking | null>
  */
 export async function getBookingByPaymentRef(reference: string): Promise<Booking | null> {
   const q = query(
-    collection(db, BOOKINGS_COLLECTION),
+    collection(getDb(), BOOKINGS_COLLECTION),
     where('paymentReference', '==', reference)
   );
   
@@ -162,7 +169,7 @@ export async function updateBookingStatus(
   status: Booking['bookingStatus'],
   paymentReference?: string
 ): Promise<void> {
-  const docRef = doc(db, BOOKINGS_COLLECTION, bookingId);
+  const docRef = doc(getDb(), BOOKINGS_COLLECTION, bookingId);
   
   const updateData: Record<string, unknown> = {
     bookingStatus: status,
@@ -196,7 +203,7 @@ export async function getBookingsForDateRange(
   endDate: Date
 ): Promise<Booking[]> {
   const q = query(
-    collection(db, BOOKINGS_COLLECTION),
+    collection(getDb(), BOOKINGS_COLLECTION),
     where('startTime', '>=', Timestamp.fromDate(startDate)),
     where('startTime', '<=', Timestamp.fromDate(endDate)),
     where('bookingStatus', 'in', ['confirmed', 'pending']),
@@ -218,7 +225,7 @@ export async function getConfirmedBookings(): Promise<Booking[]> {
   now.setHours(0, 0, 0, 0); // Start of today
 
   const q = query(
-    collection(db, BOOKINGS_COLLECTION),
+    collection(getDb(), BOOKINGS_COLLECTION),
     where('startTime', '>=', Timestamp.fromDate(now)),
     where('bookingStatus', 'in', ['confirmed', 'pending']),
     orderBy('startTime', 'asc')
@@ -259,7 +266,7 @@ export async function getBookingsForDate(date: Date): Promise<Booking[]> {
  * @returns True if this reference was already processed
  */
 export async function isPaymentProcessed(reference: string): Promise<boolean> {
-  const docRef = doc(db, PROCESSED_PAYMENTS_COLLECTION, reference);
+  const docRef = doc(getDb(), PROCESSED_PAYMENTS_COLLECTION, reference);
   const docSnap = await getDoc(docRef);
   return docSnap.exists();
 }
@@ -275,13 +282,13 @@ export async function markPaymentProcessed(
   reference: string,
   bookingId: string
 ): Promise<void> {
-  const docRef = doc(db, PROCESSED_PAYMENTS_COLLECTION, reference);
+  const docRef = doc(getDb(), PROCESSED_PAYMENTS_COLLECTION, reference);
   await updateDoc(docRef, {
     bookingId,
     processedAt: Timestamp.now(),
   }).catch(async () => {
     // If doc doesn't exist, create it
-    await addDoc(collection(db, PROCESSED_PAYMENTS_COLLECTION), {
+    await addDoc(collection(getDb(), PROCESSED_PAYMENTS_COLLECTION), {
       reference,
       bookingId,
       processedAt: Timestamp.now(),
